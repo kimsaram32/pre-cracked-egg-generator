@@ -4,7 +4,7 @@
   const context = canvas.getContext('2d')
 
   const templateImage = new Image()
-  templateImage.src = '/template.webp'
+  templateImage.src = 'template.webp'
   const fontFamily = 'Arial'
   let renderTimeout
 
