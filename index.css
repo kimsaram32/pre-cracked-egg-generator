@@ -1,0 +1,116 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*:focus-visible {
+  outline: 0.2em solid color-mix(in oklab, var(--primary), black 20%);
+  outline-offset: 0.1em;
+}
+
+input, button {
+  color: inherit;
+  font: inherit;
+}
+
+body {
+  font-size: clamp(1rem, 0.91rem + 0.43vw, 1.25rem);
+  font-family: "Arial", system-ui;
+
+  --primary: #12b7ed;
+  --secondary: #fbeb2a;
+  --bubble: #d83543;
+  --text-on-bubble: #fff;
+}
+
+main {
+  inline-size: min(92vw, 60rem);
+  margin-inline: auto;
+  padding-block: 1.6rem;
+}
+
+main > * + * {
+  margin-block-start: 2.8rem;
+}
+
+h1 {
+  font-weight: 800;
+  color: var(--primary);
+  -webkit-text-stroke: 0.3rem #000;
+  paint-order: stroke fill;
+  font-size: clamp(2.4rem, 2.1rem + 1.39vw, 3.2rem);
+}
+
+h1 span {
+  font-weight: 900;
+  color: var(--secondary);
+}
+
+main > div {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+main > div > * {
+  flex: 1 1 auto;
+}
+
+fieldset {
+  display: grid;
+  justify-content: start;
+  align-content: start;
+  gap: 1.2rem;
+  border: none;
+}
+
+label {
+  display: grid;
+  gap: 0.28rem;
+}
+
+input {
+  padding-inline: 0.48rem;
+  padding-block: 0.4rem;
+  border: 0.1rem solid #999;
+  background-color: #fefefe;
+  border-radius: 0;
+}
+
+canvas {
+  inline-size: 20rem;
+  min-inline-size: 0;
+  block-size: fit-content;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+button {
+  border: none;
+  padding-block: 1.4rem;
+  padding-inline: 2rem;
+  font-size: 1.125em;
+  background-color: color-mix(in oklab, var(--bubble), black 10%);
+  color: var(--text-on-bubble);
+  cursor: pointer;
+  border-radius: 50%;
+  transition: border-radius 0.3s, background-color 0.3s;
+}
+
+button:hover {
+  border-radius: 25%;
+  background-color: color-mix(in oklab, var(--bubble), black 20%);
+}
+
+a {
+  text-underline-offset: 0.2em;
+}
