@@ -23,7 +23,7 @@ document.querySelector('button').addEventListener('click', () => {
   })
 })
 
-renderCanvas()
+templateImage.addEventListener('load', renderCanvas)
 
 /* Rendering */
 
