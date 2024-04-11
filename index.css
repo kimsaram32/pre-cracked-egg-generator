@@ -52,7 +52,6 @@ h1 span {
 
 main > div {
   display: flex;
-  align-items: center;
   flex-wrap: wrap;
   gap: 2rem;
 }
@@ -86,6 +85,10 @@ canvas {
   inline-size: 20rem;
   min-inline-size: 0;
   block-size: fit-content;
+
+  @media (width < 40rem) {
+    order: -1;
+  }  
 }
 
 footer {
