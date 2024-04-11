@@ -4,12 +4,25 @@ const context = canvas.getContext('2d')
 
 const templateImage = new Image()
 templateImage.src = 'template.webp'
+let customProductImage
+
 const fontFamily = 'Arial'
 let renderTimeout
 
 fieldset.addEventListener('input', () => {
   clearTimeout(renderTimeout)
   renderTimeout = setTimeout(renderCanvas, 300)
+})
+
+const imageInput = fieldset.querySelector('[name="image"]')
+imageInput.addEventListener('input', async ({ target }) => {
+  const [file] = target.files
+  if (!file) {
+    return
+  }
+
+  customProductImage?.close()
+  customProductImage = await createImageBitmap(file)
 })
 
 document.querySelector('button').addEventListener('click', () => {
@@ -29,7 +42,10 @@ templateImage.addEventListener('load', renderCanvas)
 
 function renderCanvas() {
   const textMap = [...fieldset.elements]
-    .filter((control) => control instanceof HTMLInputElement)
+    .filter(
+      (control) =>
+        control instanceof HTMLInputElement && control.type === 'text'
+    )
     .reduce((map, control) => {
       map.set(control.name, control.value)
       return map
@@ -64,6 +80,10 @@ function renderCanvas() {
   
   drawRotatedText(textMap.get('hand'), 290, 230, -4)
   context.fillText(textMap.get('footer'), 225, 500)
+
+  if (customProductImage) {
+    context.drawImage(customProductImage, 160, 270, 135, 170)
+  }
 }
 
 function drawOutlinedText(...args) {
